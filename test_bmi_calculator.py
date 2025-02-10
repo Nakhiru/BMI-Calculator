@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from bmi_calculator import calculate_bmi ,load_existing_data
+from bmi_calculator import calculate_bmi ,load_existing_data,update_bmi_for_user
 
 class TestBMICalculator(unittest.TestCase):
 
@@ -70,6 +70,27 @@ class TestBMICalculator(unittest.TestCase):
 
         # Assert
         self.assertEqual(result, [])
+    
+    """ Test output file exists but user is not found (2.2) """
+    def test_update_bmi_for_user_new_user(self):
+        # Arrange
+        user = {
+            "userId": 1,
+            "firstname": "John",
+            "lastname": "Doe",
+            "weight": 70,
+            "height": 1.75
+        }
+
+        existing_data = []
+
+        # Act
+        result = update_bmi_for_user(user, existing_data)
+
+        # Assert
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0]["userId"], user["userId"])
+
 
 
 if __name__ == "__main__":
