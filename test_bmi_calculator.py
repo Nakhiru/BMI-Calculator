@@ -1,6 +1,6 @@
 import unittest
-from unittest.mock import patch
-from bmi_calculator import calculate_bmi ,load_existing_data,update_bmi_for_user
+from unittest.mock import mock_open, patch
+from bmi_calculator import calculate_bmi ,load_existing_data,update_bmi_for_user,read_input_file
 
 class TestBMICalculator(unittest.TestCase):
 
@@ -115,6 +115,18 @@ class TestBMICalculator(unittest.TestCase):
         # Assert
         self.assertEqual(len(result), 1)
         self.assertEqual(len(result[0]["bmiMeasures"]), 1)
+
+    """ Test input file is found and contains valid JSON (3.1) """
+    @patch("builtins.open", mock_open(read_data='{"userId": 1, "firstname": "John", "lastname": "Doe", "weight": 70, "height": 1.75}'))
+    def test_read_valid_json(self):
+        # Arrange
+        expected_result = '{"userId": 1, "firstname": "John", "lastname": "Doe", "weight": 70, "height": 1.75}'
+        
+        # Act
+        result = read_input_file("input.json")
+        
+        # Assert
+        self.assertEqual(result, expected_result)
 
 
 
