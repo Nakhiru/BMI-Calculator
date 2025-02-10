@@ -61,8 +61,8 @@ def read_input_file(input_file):
     try:
         with open(input_file) as file:
             return file.read()
-    except FileNotFoundError:
-        return None  # Now the function does NOT raise an error
+    except FileNotFoundError as e :
+        raise FileNotFoundError(f"Error reading input file {input_file}: {e}")
 
 
 def main():
