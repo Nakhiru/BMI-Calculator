@@ -65,3 +65,12 @@ L'IMC ne prend pas en compte certains facteurs comme la **sportivité** ou encor
 2. Se déplacer dans le projet: ```cd .\BMI-Calculator\```
 3. Build l'image Docker: ```docker build -t bmi-calculator .```
 4. Run le projet en fournissant le fichier d'entrée: ```docker run -v "$(pwd):/app" bmi-calculator input.json```
+
+### 📌 Accéder au rapport de test sur GitHub Actions
+
+1. Cliquez sur l’onglet "Actions" de votre dépôt GitHub.
+2. Dans la colonne de gauche, sélectionnez le workflow "Run Test" pour afficher les exécutions.
+3. Choisissez un workflow run spécifique dans la liste.
+4. Cliquez sur le job correspondant, comme "Run Tests".
+5. Dans les logs, ouvrez la section "Run Tests" pour afficher les détails.
+6. Vous verrez alors tous les tests effectués ainsi que leur statut (réussite ou échec). ✅❌
