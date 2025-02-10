@@ -28,6 +28,17 @@ class TestBMICalculator(unittest.TestCase):
         with self.assertRaises(ValueError):
             calculate_bmi(weight, height)
 
+    
+    """ Test BMI calculation with invalid (zero) inputs (1.3) """
+    def test_calculate_bmi_invalid_zero(self):
+        # Arrange
+        weight = 0
+        height = 1.75
+
+        # Act and assert
+        with self.assertRaises(ValueError):
+            calculate_bmi(weight, height)
+
 
 if __name__ == "__main__":
     unittest.main()
