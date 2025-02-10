@@ -1,5 +1,7 @@
 # Calculateur d'Indice de Masse Corporelle (IMC)
 
+[![Unit Tests](https://github.com/Nakhiru/BMI-Calculator/actions/workflows/testing.yml/badge.svg?branch=main)](https://github.com/Nakhiru/BMI-Calculator/actions/workflows/testing.yml)
+
 ## 📌 Définition du programme
 
 Ce programme est un **module autonome** en **Python** permettant de calculer l'**Indice de Masse Corporelle (IMC)**, un indicateur permettant d'évaluer la corpulence d'un individu.
