@@ -40,5 +40,16 @@ class TestBMICalculator(unittest.TestCase):
             calculate_bmi(weight, height)
 
 
+    """ Test BMI calculation with invalid (wrong type) inputs (1.4) """
+    def test_calculate_bmi_invalid_type(self):
+        # Arrange
+        weight = "Invalid value"
+        height = 1.75
+
+        # Act and assert
+        with self.assertRaises(ValueError):
+            calculate_bmi(weight, height)
+
+
 if __name__ == "__main__":
     unittest.main()
