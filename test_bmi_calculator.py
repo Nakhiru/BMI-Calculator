@@ -136,6 +136,13 @@ class TestBMICalculator(unittest.TestCase):
         with self.assertRaises(FileNotFoundError):
             read_input_file("non_existent_input.json")
     
+    """ Test no input file provided (3.3) """
+    @patch('sys.argv', ["bmi_calculator.py"])
+    def test_main_no_input_file(self):
+        # Act and assert
+        with self.assertRaises(ValueError):
+            main()
+    
 
 
 
