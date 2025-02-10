@@ -1,6 +1,6 @@
 # Calculateur d'Indice de Masse Corporelle (IMC)
 
-[![Unit Tests](https://github.com/Nakhiru/BMI-Calculator/actions/workflows/testing.yml/badge.svg?branch=main)](https://github.com/Nakhiru/BMI-Calculator/actions/workflows/testing.yml)
+[![Unit Tests](https://github.com/Nakhiru/BMI-Calculator/actions/workflows/unit-tests.yml/badge.svg?branch=main)](https://github.com/Nakhiru/BMI-Calculator/actions/workflows/unit-tests.yml)
 
 ## 📌 Définition du programme
 
