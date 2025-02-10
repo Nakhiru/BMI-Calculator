@@ -87,8 +87,8 @@ def read_input_file(input_file):
     try:
         with open(input_file, 'r') as file:
             return file.read()
-    except IOError as e:
-        raise IOError(f"Error reading input file {input_file}: {e}")
+    except FileNotFoundError as e:
+        raise FileNotFoundError(f"Error reading input file {input_file}: {e}")
 
 
 def main():
