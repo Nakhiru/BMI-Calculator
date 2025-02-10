@@ -90,6 +90,32 @@ class TestBMICalculator(unittest.TestCase):
         # Assert
         self.assertEqual(len(result), 1)
         self.assertEqual(result[0]["userId"], user["userId"])
+    
+    """ Test output file exists and user is found (2.3) """
+    def test_update_bmi_for_user_existing_user(self):
+        # Arrange
+        user = {
+            "userId": 1,
+            "firstname": "John",
+            "lastname": "Doe",
+            "weight": 70,
+            "height": 1.75
+        }
+
+        existing_data = [{
+            "userId": 1,
+            "firstname": "John",
+            "lastname": "Doe",
+            "bmiMeasures": []
+        }]
+
+        # Act
+        result = update_bmi_for_user(user, existing_data)
+
+        # Assert
+        self.assertEqual(len(result), 1)
+        self.assertEqual(len(result[0]["bmiMeasures"]), 1)
+
 
 
 
