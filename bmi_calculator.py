@@ -56,6 +56,12 @@ def add_new_user(user, existing_data):
     })
     return existing_data
 
+def read_input_file(input_file):
+    """Read the input file and return its content."""
+    with open(input_file, 'r') as file:
+        return file.read()
+
+
 def main():
     print("Hello, BMI Calculator user !")
     output_file = 'output_bmi_data.json'
