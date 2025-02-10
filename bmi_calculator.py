@@ -2,6 +2,8 @@ def calculate_bmi(weight, height):
     """Calculate BMI given weight and height."""
     weight = weight
     height = height
+    if weight < 0 or height < 0:
+        raise ValueError("Weight and height must be strictly positive.")
 
     return weight / (height ** 2)
 
