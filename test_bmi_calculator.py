@@ -142,6 +142,9 @@ class TestBMICalculator(unittest.TestCase):
         # Act and assert
         with self.assertRaises(ValueError):
             main()
+
+    
+    
     
 
 
