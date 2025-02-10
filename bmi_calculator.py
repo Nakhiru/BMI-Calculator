@@ -67,7 +67,11 @@ def read_input_file(input_file):
 
 def main():
     print("Hello, BMI Calculator user !")
+
+    if len(sys.argv) < 2:
+        raise ValueError("No input file provided")
     output_file = 'output_bmi_data.json'
+
 
     try:
         # Load the existing data from the output file
