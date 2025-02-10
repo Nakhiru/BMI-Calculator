@@ -1,4 +1,5 @@
 import json
+import sys
 
 
 def calculate_bmi(weight, height):
@@ -24,6 +25,14 @@ def load_existing_data(output_file):
 
 def main():
     print("Hello, BMI Calculator user !")
+    output_file = 'output_bmi_data.json'
+
+    try:
+        # Load the existing data from the output file
+        existing_data = load_existing_data(output_file)
+    except Exception as e:
+        print(f"Error: {e}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

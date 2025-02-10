@@ -1,7 +1,6 @@
 import unittest
 from unittest.mock import patch
-from BMICalculator.bmi_calculator import load_existing_data
-from bmi_calculator import calculate_bmi
+from bmi_calculator import calculate_bmi ,load_existing_data
 
 class TestBMICalculator(unittest.TestCase):
 
