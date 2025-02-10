@@ -58,8 +58,11 @@ def add_new_user(user, existing_data):
 
 def read_input_file(input_file):
     """Read the input file and return its content."""
-    with open(input_file, 'r') as file:
-        return file.read()
+    try:
+        with open(input_file) as file:
+            return file.read()
+    except FileNotFoundError:
+        return None  # Now the function does NOT raise an error
 
 
 def main():

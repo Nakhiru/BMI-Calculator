@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import mock_open, patch
-from bmi_calculator import calculate_bmi ,load_existing_data,update_bmi_for_user,read_input_file
+from bmi_calculator import calculate_bmi ,load_existing_data,update_bmi_for_user,read_input_file,main
 
 class TestBMICalculator(unittest.TestCase):
 
@@ -127,6 +127,19 @@ class TestBMICalculator(unittest.TestCase):
         
         # Assert
         self.assertEqual(result, expected_result)
+
+
+    """ Test input file is not found (3.2) """
+    @patch("builtins.open", side_effect=FileNotFoundError)
+    def test_read_input_file_not_found(self, mock_file):
+        # Act and assert
+        with self.assertRaises(FileNotFoundError):
+            read_input_file("non_existent_input.json")
+    
+
+
+
+
     
     
 
