@@ -1,4 +1,6 @@
 import unittest
+from unittest.mock import patch
+from BMICalculator.bmi_calculator import load_existing_data
 from bmi_calculator import calculate_bmi
 
 class TestBMICalculator(unittest.TestCase):
@@ -60,6 +62,15 @@ class TestBMICalculator(unittest.TestCase):
         # Act and assert
         with self.assertRaises(ValueError):
             calculate_bmi(weight, height)
+    
+    """ Test output file does not exist (2.1) """
+    @patch("builtins.open", side_effect=FileNotFoundError)
+    def test_load_existing_data_file_not_found(self, mock_file):
+        # Act
+        result = load_existing_data("non_existent_file.json")
+
+        # Assert
+        self.assertEqual(result, [])
 
 
 if __name__ == "__main__":
