@@ -1,6 +1,10 @@
+import sys
 import unittest
-from unittest.mock import mock_open, patch
-from bmi_calculator import calculate_bmi ,load_existing_data,update_bmi_for_user,read_input_file,main
+import json
+from unittest.mock import patch, mock_open
+from io import StringIO
+from datetime import datetime
+from bmi_calculator import calculate_bmi, load_existing_data, main, update_bmi_for_user, add_new_user, write_to_file, process_input_data, read_input_file
 
 class TestBMICalculator(unittest.TestCase):
 
@@ -29,7 +33,7 @@ class TestBMICalculator(unittest.TestCase):
         with self.assertRaises(ValueError):
             calculate_bmi(weight, height)
 
-    
+
     """ Test BMI calculation with invalid (zero) inputs (1.3) """
     def test_calculate_bmi_invalid_zero(self):
         # Arrange
@@ -40,7 +44,7 @@ class TestBMICalculator(unittest.TestCase):
         with self.assertRaises(ValueError):
             calculate_bmi(weight, height)
 
-
+    
     """ Test BMI calculation with invalid (wrong type) inputs (1.4) """
     def test_calculate_bmi_invalid_type(self):
         # Arrange
@@ -51,7 +55,7 @@ class TestBMICalculator(unittest.TestCase):
         with self.assertRaises(ValueError):
             calculate_bmi(weight, height)
 
-    
+
     """ Test BMI calculation with invalid (null) inputs (1.5) """
     def test_calculate_bmi_invalid_null(self):
         # Arrange
@@ -61,6 +65,7 @@ class TestBMICalculator(unittest.TestCase):
         # Act and assert
         with self.assertRaises(ValueError):
             calculate_bmi(weight, height)
+
     
     """ Test output file does not exist (2.1) """
     @patch("builtins.open", side_effect=FileNotFoundError)
@@ -70,7 +75,8 @@ class TestBMICalculator(unittest.TestCase):
 
         # Assert
         self.assertEqual(result, [])
-    
+
+
     """ Test output file exists but user is not found (2.2) """
     def test_update_bmi_for_user_new_user(self):
         # Arrange
@@ -90,7 +96,8 @@ class TestBMICalculator(unittest.TestCase):
         # Assert
         self.assertEqual(len(result), 1)
         self.assertEqual(result[0]["userId"], user["userId"])
-    
+
+
     """ Test output file exists and user is found (2.3) """
     def test_update_bmi_for_user_existing_user(self):
         # Arrange
@@ -116,6 +123,7 @@ class TestBMICalculator(unittest.TestCase):
         self.assertEqual(len(result), 1)
         self.assertEqual(len(result[0]["bmiMeasures"]), 1)
 
+    
     """ Test input file is found and contains valid JSON (3.1) """
     @patch("builtins.open", mock_open(read_data='{"userId": 1, "firstname": "John", "lastname": "Doe", "weight": 70, "height": 1.75}'))
     def test_read_valid_json(self):
@@ -136,22 +144,13 @@ class TestBMICalculator(unittest.TestCase):
         with self.assertRaises(FileNotFoundError):
             read_input_file("non_existent_input.json")
     
+
     """ Test no input file provided (3.3) """
     @patch('sys.argv', ["bmi_calculator.py"])
     def test_main_no_input_file(self):
         # Act and assert
         with self.assertRaises(ValueError):
             main()
-
-    
-    
-    
-
-
-
-
-    
-    
 
 
 
